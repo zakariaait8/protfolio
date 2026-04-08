@@ -1,20 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zakaria  Ait khazant Portfolio</title>
+  <title>Zakaria Ait khazant Portfolio</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,800" rel="stylesheet">
   <style>
     /* Reset */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family: 'Raleway', sans-serif; background: #f4f4f4; color: #333;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Reveal Animation Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(1, 1, 39, 0.95);
+      z-index: 1000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: #f9f1e9;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00c8ff;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      margin-top: 20px;
+      background: transparent;
+      color: #00c8ff;
+      border: 2px solid #00c8ff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #00c8ff;
+      color: #010127;
+      box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+      transform: translateY(-2px);
+    }
 
     /* Header */
     header {
       position: relative;
       width: 100%;
-      height: 60vh; /* slightly more than half page */
+      height: 60vh;
+      /* slightly more than half page */
       overflow: hidden;
       background: #010127 url('Untitled design (1).png') no-repeat center center;
       background-size: cover;
@@ -37,7 +115,7 @@
       color: #f9f1e9;
       text-align: center;
       z-index: 2;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
 
     .header-content h1 {
@@ -61,7 +139,7 @@
 
     #about h2 {
       font-size: 2.2em;
-      text-align:center;
+      text-align: center;
       margin-bottom: 40px;
       color: #010127;
     }
@@ -71,8 +149,8 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
 
     .card {
@@ -80,7 +158,7 @@
       padding: 25px;
       border-radius: 15px;
       flex: 1 1 250px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
       overflow: hidden;
@@ -88,7 +166,7 @@
 
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
     }
 
     .card h3 {
@@ -101,7 +179,7 @@
       font-weight: 500;
       line-height: 1.5;
     }
-    
+
 
     /* Icons */
     .card::before {
@@ -112,108 +190,186 @@
       right: 20px;
       opacity: 0.2;
     }
+
     /* Projects Section */
-.projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-}
+    .projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
 
-.project-card {
-  background: #010127; /* matching header color */
-  color: #f9f1e9;
-  padding: 20px;
-  border-radius: 10px;
-  width: 280px;
-  text-align: center;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .project-card {
+      background: #010127;
+      /* matching header color */
+      color: #f9f1e9;
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.project-card h3 {
-  margin-bottom: 10px;
-  font-size: 1.5em;
-}
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
 
-.project-card p {
-  font-size: 1em;
-  line-height: 1.4;
-}
+    .project-card p {
+      font-size: 1em;
+      line-height: 1.4;
+    }
 
-/* Hover Effect */
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.4);
-}
+    /* Hover Effect */
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    }
 
-/* Skills Section */
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 20px;
-}
+    .project-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8em;
+      color: #00c8ff;
+    }
 
-.skill {
-  background: #010127; /* same as header */
-  color: #f9f1e9;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-weight: 500;
-  cursor: default;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    /* Testimonials */
+    #testimonials {
+      background: #010127;
+      color: #f9f1e9;
+    }
 
-.skill:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
+    #testimonials h2 {
+      color: #f9f1e9;
+    }
 
-.cert-timeline {
-  max-width: 600px;
-  margin: 20px auto;
-  border-left: 2px solid #010127;
-  padding-left: 20px;
-}
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
 
-.cert-item {
-  margin-bottom: 20px;
-}
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      width: 300px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      backdrop-filter: blur(4px);
+    }
 
-.cert-year {
-  font-weight: bold;
-  color: #010127;
-  margin-bottom: 5px;
-}
+    .testimonial-card p {
+      font-style: italic;
+      font-size: 1em;
+    }
 
-.cert-info {
-  font-size: 1.1em;
-}
+    .testimonial-author {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #00c8ff;
+      text-align: right;
+    }
 
-/* Contact Section */
-#contact {
-  text-align: center;
-  padding: 60px 20px;
-  background: #f4f4f4;
-  color: #010127; /* Dark header color for contrast */
-}
+    /* Skills Section */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
 
-#contact a {
-  color: #010127;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
+    .skill {
+      background: #010127;
+      /* same as header */
+      color: #f9f1e9;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 500;
+      cursor: default;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-#contact a:hover {
-  color: #00c8ff;
-  transform: translateY(-2px);
-}
+    .skill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
 
+    .cert-timeline {
+      max-width: 600px;
+      margin: 20px auto;
+      border-left: 2px solid #010127;
+      padding-left: 20px;
+    }
 
+    .cert-item {
+      margin-bottom: 20px;
+    }
+
+    .cert-year {
+      font-weight: bold;
+      color: #010127;
+      margin-bottom: 5px;
+    }
+
+    .cert-info {
+      font-size: 1.1em;
+    }
+
+    /* Contact Section */
+    #contact {
+      text-align: center;
+      padding: 60px 20px;
+      background: #f4f4f4;
+      color: #010127;
+      /* Dark header color for contrast */
+    }
+
+    #contact a {
+      color: #010127;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    #contact a:hover {
+      color: #00c8ff;
+      transform: translateY(-2px);
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1em;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-form button {
+      align-self: center;
+    }
 
     /* Sections */
     section {
@@ -225,7 +381,7 @@
     h2 {
       margin-bottom: 20px;
       font-size: 2em;
-      text-align:center;
+      text-align: center;
     }
 
     p {
@@ -243,121 +399,203 @@
     }
 
     /* Responsive */
-    @media(max-width:768px){
-      .header-content h1 {font-size:2em;}
-      .bio-cards {flex-direction: column; gap: 15px;}
+    @media(max-width:768px) {
+      .header-content h1 {
+        font-size: 2em;
+      }
+
+      .bio-cards {
+        flex-direction: column;
+        gap: 15px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <canvas id="animated-header-canvas"></canvas>
-  <div class="header-content">
-    <h1>ZAKARIA AIT KHAZANT</h1>
-    <p>Certified Salesforce Administrator | CRM & Automation Enthusiast</p>
-  </div>
-</header>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="bio-cards">
-    <div class="card" data-icon="🧑‍💻">
-      <h3>Who I Am</h3>
-      <p> <br>Certified Salesforce Administrator with experience in configuring solutions, managing users, and automating processes. Proven ability to prioritize tasks, meet deadlines, and collaborate with cross-functional teams</p>
+  <header>
+    <canvas id="animated-header-canvas"></canvas>
+    <div class="header-content">
+      <h1>ZAKARIA AIT KHAZANT</h1>
+      <p>Certified Salesforce Administrator | CRM & Automation Enthusiast</p>
+      <a href="Zakaria_CV.pdf" download="Zakaria_CV.pdf" class="btn">Download Resume</a>
     </div>
-    <div class="card" data-icon="⚡">
-      <h3>What I Do</h3>
-      <p> <br>I streamline business processes, implement flows, and manage data effectively to help teams work smarter.</p>
+  </header>
+
+  <section id="about" class="reveal">
+    <h2>About Me</h2>
+    <div class="bio-cards">
+      <div class="card" data-icon="🧑‍💻">
+        <h3>Who I Am</h3>
+        <p> <br>Certified Salesforce Administrator with experience in configuring solutions, managing users, and
+          automating processes. Proven ability to prioritize tasks, meet deadlines, and collaborate with
+          cross-functional teams</p>
+      </div>
+      <div class="card" data-icon="⚡">
+        <h3>What I Do</h3>
+        <p> <br>I streamline business processes, implement flows, and manage data effectively to help teams work
+          smarter.</p>
+      </div>
+      <div class="card" data-icon="🎯">
+        <h3>My Passion</h3>
+        <p> <br> I love solving problems, learning new tools, and creating solutions that make an impact on businesses
+          and users.</p>
+      </div>
+      <div class="card" data-icon="🚀">
+        <h3>Goals</h3>
+        <p>Continuously improve my Salesforce expertise, deliver smarter CRM solutions, and grow as a technology leader.
+        </p>
+      </div>
     </div>
-    <div class="card" data-icon="🎯">
-      <h3>My Passion</h3>
-      <p> <br> I love solving problems, learning new tools, and creating solutions that make an impact on businesses and users.</p>
+  </section>
+
+  <section id="projects" class="reveal">
+    <h2>Projects</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>RideTrack CRM</h3>
+        <p><b>Impact:</b> Automated inventory & onboarding using Flow Builder, reducing manual tracking time by 40%.</p>
+        <div class="project-stats">
+          <span>Flow Builder</span>
+          <span>Sales Cloud</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>Nonprofit Donation System</h3>
+        <p><b>Impact:</b> Configured approval processes, reports, and role hierarchies, streamlining donation tracking
+          by 25%.</p>
+        <div class="project-stats">
+          <span>Reports/Dashboards</span>
+          <span>NPSP</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p><b>Impact:</b> Designed and developed a personal portfolio to showcase CRM projects and technical writing
+          using HTML, CSS & JS.</p>
+        <div class="project-stats">
+          <span>HTML5</span>
+          <span>CSS3/JS</span>
+        </div>
+      </div>
+      <a href="https://docs.google.com/document/d/1hQYfDQBusI5JipnkUjV1u6TZr2DfvEagYdNnlOQxGbs/edit?usp=sharing"
+        target="_blank" style="text-decoration: none;">
+        <div class="project-card">
+          <h3>EliMax Solar SOP</h3>
+          <p><b>Impact:</b> Designed a comprehensive Solution System & Standard Operating Procedure (SOP) to optimize
+            standard workflows.</p>
+          <div class="project-stats">
+            <span>Solution Design</span>
+            <span>SOP</span>
+          </div>
+        </div>
+      </a>
     </div>
-    <div class="card" data-icon="🚀">
-  <h3>Goals</h3>
-  <p>Continuously improve my Salesforce expertise, deliver smarter CRM solutions, and grow as a technology leader.</p>
+  </section>
+
+  <section id="skills" class="reveal">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <span class="skill">Salesforce: Flows</span>
+      <span class="skill">Reports & Dashboards</span>
+      <span class="skill">Validation Rules</span>
+      <span class="skill">Data Management</span>
+      <span class="skill">HTML</span>
+      <span class="skill">CSS</span>
+      <span class="skill">Team leadership</span>
+      <span class="skill">Communication</span>
+      <span class="skill">Problem Solving</span>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="projects-container">
-    <div class="project-card">
-      <h3>RideTrack CRM</h3>
-      <p>Automated inventory & onboarding using Flow Builder.</p>
+  <section id="certifications" class="reveal">
+    <h2>Certifications & Badges</h2>
+    <div class="cert-timeline">
+      <div class="cert-item">
+        <div class="cert-year">01/2025</div>
+        <div class="cert-info">ALX Professional Foundation</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-year">07/2025</div>
+        <div class="cert-info">Trailhead Salesforce Associate</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-year">10/2025</div>
+        <div class="cert-info">Trailhead Salesforce Administrator</div>
+      </div>
     </div>
-    <div class="project-card">
-      <h3>Nonprofit Donation System</h3>
-      <p>Configured approval processes, reports, and role hierarchies.</p>
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="https://www.salesforce.com/trailblazer/h9bq9xiz2ivn7lg6iv" target="_blank" class="btn">View My
+        Trailblazer
+        Profile</a>
     </div>
-    <div class="project-card">
-      <h3>Portfolio Website</h3>
-      <p>Designed and developed a personal portfolio using HTML, CSS & JS.</p>
+  </section>
+
+
+  <section id="testimonials" class="reveal">
+    <h2>What People Say</h2>
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <p>"Zakaria's ability to streamline our Salesforce workflows saved the team hours each week. Highly
+          recommended!"</p>
+        <div class="testimonial-author">- Delivery Manager</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"An incredible problem solver. Always configuring solutions that directly impact our bottom line."</p>
+        <div class="testimonial-author">- Operations VP</div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills-container">
-    <span class="skill">Salesforce: Flows</span>
-    <span class="skill">Reports & Dashboards</span>
-    <span class="skill">Validation Rules</span>
-    <span class="skill">Data Management</span>
-    <span class="skill">HTML</span>
-    <span class="skill">CSS</span>
-    <span class="skill">Team leadership</span>
-    <span class="skill">Communication</span>
-    <span class="skill">Problem Solving</span>
-  </div>
-</section>
-
-<section id="certifications">
-  <h2>Certifications</h2>
-  <div class="cert-timeline">
-    <div class="cert-item">
-      <div class="cert-year">01/2025</div>
-      <div class="cert-info">ALX Professional Foundation</div>
+  <section id="contact" class="reveal">
+    <h2>Contact</h2>
+    <p>If you’d like to get in touch, feel free to reach out via email or connect with me on LinkedIn.</p>
+    <div style="text-align: center; margin-bottom: 20px;">
+      <p>Email: <a href="mailto:zaitkhazant@gmail.com">zaitkhazant@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/zakaria-ait-khazant-90301b364/"
+          target="_blank">linkedin.com/in/zakaria-ait</a></p>
+      <a href="Zakaria_CV.pdf" download="Zakaria_CV.pdf" class="btn" style="margin-top: 10px;">Download Resume</a>
     </div>
-    <div class="cert-item">
-      <div class="cert-year">07/2025</div>
-      <div class="cert-info">Trailhead Salesforce Associate</div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-year">10/2025</div>
-      <div class="cert-info">Trailhead Salesforce Administrator</div> 
-    </div>
-  </div>
-</section>
+
+    <form class="contact-form" action="https://formsubmit.co/zaitkhazant@gmail.com" method="POST">
+      <!-- Hidden field to prevent a generic thank-you page jumping away entirely if desired, but base functionality relies just on the action URL -->
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
 
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>If you’d like to get in touch, feel free to reach out via email or connect with me on LinkedIn.</p>
-  <p>Email: <a href="mailto:zaitkhazant@gmail.com">zaitkhazant@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/zakaria-ait-khazant-90301b364/" target="_blank">linkedin.com/in/zakaria-ait</a></p>
-</section>
+  <!-- Animation Scripts -->
+  <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js'></script>
+  <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js'></script>
+  <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js'></script>
 
+  <script>
+    (function () {
+      var width, height, canvas, ctx, points, target, animateHeader = true;
 
-<!-- Animation Scripts -->
-<script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js'></script>
-<script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js'></script>
-<script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js'></script>
+      initHeader();
+      initAnimation();
+      addListeners();
 
-<script>
-(function() {
-    var width, height, canvas, ctx, points, target, animateHeader = true;
-
-    initHeader();
-    initAnimation();
-    addListeners();
-
-    function initHeader() {
+      function initHeader() {
         width = window.innerWidth;
         height = window.innerHeight * 0.6; // header 60% of viewport
-        target = {x: width/2, y: height/2};
+        target = { x: width / 2, y: height / 2 };
 
         canvas = document.getElementById('animated-header-canvas');
         canvas.width = width;
@@ -366,106 +604,124 @@
 
         points = [];
         for (var x = 0; x < width; x += width / 20) {
-            for (var y = 0; y < height; y += height / 20) {
-                var px = x + Math.random() * width / 20;
-                var py = y + Math.random() * height / 20;
-                points.push({x:px, originX:px, y:py, originY:py});
-            }
+          for (var y = 0; y < height; y += height / 20) {
+            var px = x + Math.random() * width / 20;
+            var py = y + Math.random() * height / 20;
+            points.push({ x: px, originX: px, y: py, originY: py });
+          }
         }
 
         for (var i = 0; i < points.length; i++) {
-            var closest = [];
-            var p1 = points[i];
-            for (var j = 0; j < points.length; j++) {
-                var p2 = points[j];
-                if (p1 !== p2) {
-                    var placed = false;
-                    for (var k = 0; k < 5; k++) {
-                        if (!placed && !closest[k]) {
-                            closest[k] = p2;
-                            placed = true;
-                        }
-                    }
-                    for (var k = 0; k < 5; k++) {
-                        if (!placed && getDistance(p1,p2) < getDistance(p1,closest[k])) {
-                            closest[k] = p2;
-                            placed = true;
-                        }
-                    }
+          var closest = [];
+          var p1 = points[i];
+          for (var j = 0; j < points.length; j++) {
+            var p2 = points[j];
+            if (p1 !== p2) {
+              var placed = false;
+              for (var k = 0; k < 5; k++) {
+                if (!placed && !closest[k]) {
+                  closest[k] = p2;
+                  placed = true;
                 }
+              }
+              for (var k = 0; k < 5; k++) {
+                if (!placed && getDistance(p1, p2) < getDistance(p1, closest[k])) {
+                  closest[k] = p2;
+                  placed = true;
+                }
+              }
             }
-            p1.closest = closest;
+          }
+          p1.closest = closest;
         }
 
-        for (var i in points) points[i].circle = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
-    }
+        for (var i in points) points[i].circle = new Circle(points[i], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
+      }
 
-    function addListeners() {
+      function addListeners() {
         if (!('ontouchstart' in window)) window.addEventListener('mousemove', mouseMove);
         window.addEventListener('scroll', scrollCheck);
         window.addEventListener('resize', resize);
-    }
+      }
 
-    function mouseMove(e) {
+      function mouseMove(e) {
         target.x = e.pageX || e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
         target.y = e.pageY || e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-    }
+      }
 
-    function scrollCheck() { animateHeader = !(document.body.scrollTop > height); }
-    function resize() { width = window.innerWidth; height = window.innerHeight * 0.6; canvas.width = width; canvas.height = height; }
+      function scrollCheck() { animateHeader = !(document.body.scrollTop > height); }
+      function resize() { width = window.innerWidth; height = window.innerHeight * 0.6; canvas.width = width; canvas.height = height; }
 
-    function initAnimation() { animate(); for (var i in points) shiftPoint(points[i]); }
+      function initAnimation() { animate(); for (var i in points) shiftPoint(points[i]); }
 
-    function animate() {
+      function animate() {
         if (animateHeader) {
-            ctx.clearRect(0,0,width,height);
-            for (var i in points) {
-                var dist = Math.abs(getDistance(target, points[i]));
-                if (dist < 4000) { points[i].active=0.3; points[i].circle.active=0.6; }
-                else if (dist < 20000) { points[i].active=0.1; points[i].circle.active=0.3; }
-                else if (dist < 40000) { points[i].active=0.02; points[i].circle.active=0.1; }
-                else { points[i].active=0; points[i].circle.active=0; }
-                drawLines(points[i]);
-                points[i].circle.draw();
-            }
+          ctx.clearRect(0, 0, width, height);
+          for (var i in points) {
+            var dist = Math.abs(getDistance(target, points[i]));
+            if (dist < 4000) { points[i].active = 0.3; points[i].circle.active = 0.6; }
+            else if (dist < 20000) { points[i].active = 0.1; points[i].circle.active = 0.3; }
+            else if (dist < 40000) { points[i].active = 0.02; points[i].circle.active = 0.1; }
+            else { points[i].active = 0; points[i].circle.active = 0; }
+            drawLines(points[i]);
+            points[i].circle.draw();
+          }
         }
         requestAnimationFrame(animate);
-    }
+      }
 
-    function shiftPoint(p) {
+      function shiftPoint(p) {
         TweenLite.to(p, 1 + Math.random(), {
-            x: p.originX - 50 + Math.random() * 100,
-            y: p.originY - 50 + Math.random() * 100,
-            ease: Circ.easeInOut,
-            onComplete: function() { shiftPoint(p); }
+          x: p.originX - 50 + Math.random() * 100,
+          y: p.originY - 50 + Math.random() * 100,
+          ease: Circ.easeInOut,
+          onComplete: function () { shiftPoint(p); }
         });
-    }
+      }
 
-    function drawLines(p) {
+      function drawLines(p) {
         if (!p.active) return;
         for (var i in p.closest) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(156,217,249,' + p.active + ')';
-            ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.closest[i].x, p.closest[i].y);
+          ctx.strokeStyle = 'rgba(156,217,249,' + p.active + ')';
+          ctx.stroke();
         }
-    }
+      }
 
-    function Circle(pos, rad, color) {
-        this.pos = pos; this.radius = rad; this.color = color; this.active=0;
-        this.draw = function() {
-            if (!this.active) return;
-            ctx.beginPath();
-            ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2*Math.PI,false);
-            ctx.fillStyle = 'rgba(156,217,249,' + this.active + ')';
-            ctx.fill();
+      function Circle(pos, rad, color) {
+        this.pos = pos; this.radius = rad; this.color = color; this.active = 0;
+        this.draw = function () {
+          if (!this.active) return;
+          ctx.beginPath();
+          ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, false);
+          ctx.fillStyle = 'rgba(156,217,249,' + this.active + ')';
+          ctx.fill();
         }
-    }
+      }
 
-    function getDistance(p1,p2){ return Math.pow(p1.x - p2.x,2) + Math.pow(p1.y - p2.y,2);}
-})();
-</script>
+      function getDistance(p1, p2) { return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2); }
+    })();
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const reveals = document.querySelectorAll(".reveal");
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      reveals.forEach(reveal => revealObserver.observe(reveal));
+    });
+  </script>
 
 </body>
+
 </html>
